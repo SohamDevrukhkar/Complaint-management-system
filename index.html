@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complaint Management System</title>
+  <link rel="stylesheet" href="index.css" />
+  <script type="module" src="index.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <div>
+        <h1>Complaint Management System</h1>
+      </div>
+      <p class="welcome-text" id="userName">Welcome, User</p>
+    </header>
+
+    <section class="card card-animate">
+      <h2 id="formTitle">Add Complaint</h2>
+      <form id="complaintForm" class="form">
+        <input id="subject" type="text" placeholder="Complaint subject" required />
+        <textarea id="description" rows="4" placeholder="Complaint description" required></textarea>
+
+        <div class="row">
+          <select id="priority" required>
+            <option value="">Select Priority</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+
+          <select id="status" required>
+            <option value="">Select Status</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">Save Complaint</button>
+      </form>
+    </section>
+
+    <section class="card card-animate delay">
+      <h2>All Complaints</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Subject</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Completed</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="complaintsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  const userName = document.getElementById("userName");
+  const avatarInitial = document.getElementById("avatarInitial");
+
+  const username = prompt("Enter your username");
+
+  if (username && username.trim() !== "") {
+    const cleanName = username.trim();
+    userName.textContent = cleanName;
+    avatarInitial.textContent = cleanName.charAt(0).toUpperCase();
+  }
+ 
+ 
+</script>
+</body>
+</html>

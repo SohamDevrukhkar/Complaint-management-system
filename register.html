@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Complaint Management System</title>
+  <link rel="stylesheet" href="register.css">
+  <script type="module" src="register.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="page-container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          Complaint Management
+        </a>
+        <nav id="main-nav">
+          <a href="login.html">Login</a>
+          <a href="register.html" class="btn-primary active">Register</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <div class="form-card">
+        <h1>Create account</h1>
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required placeholder="••••••••">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary-solid" id="submit">Create account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="page-container">
+      <p>&copy; <span id="year"></span> Complaint Management System.</p>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const user = getCurrentUser();
+    if (user) {
+      window.location.href = 'dashboard.html';
+    }
+
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      register(email, password);
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>
